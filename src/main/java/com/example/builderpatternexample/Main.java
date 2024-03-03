@@ -1,13 +1,23 @@
 package com.example.builderpatternexample;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class Main {
 
     public static void main(String[] args) {
-        Card myCard = new CardBuilder().buildCard("MyTitle", "Basic version of myCard", 1, 1234, 45609, 5, "WIP", 11, true, "My subcategory");
+        Card myCard = new CardBuilder()
+                .setCardTitle("MyTitle")
+                .setCardDescription("Basic version of myCard")
+                .setPillarId(1)
+                .setUserId(1234)
+                .setDueDate(Date.valueOf("2024-12-22")) // Correct date format
+                .setPriority(5)
+                .setStatus("WIP")
+                .setReminderTime(Time.valueOf("08:09:09")) // Assuming the correct time format
+                .setNotificationEnabled(true) // Corrected line
+                .setSubcategory("My subcategory")
+                .buildCard();
         System.out.println("My card is " + myCard);
-
-        Card yourCard = new CardBuilder().buildCard("YourTitle", "Your version of a card", 1, 4321, 983823, 2, "Backlog", 11, false, "Your subcategory");
-        System.out.println("Your card is " + yourCard);
     }
-    
 }
